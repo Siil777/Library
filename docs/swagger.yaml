@@ -1,0 +1,163 @@
+openapi: 3.0.2
+info:
+  title: TARgv22-BooksApi
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      tags:
+        - books
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                List of books:
+                  value: |-
+                    [
+                        "1984",
+                        "In Search of Lost Time",
+                        "Don Quixote",
+                        "The Great Gatsby",
+                    
+                    ]
+          description: book was found
+      description: Returns of all books in API
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-book'
+            examples:
+              book has been added:
+                value:
+                  name: some text
+                  price: 16
+                  rating: 50
+        required: true
+      tags:
+        - new-book
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/new-book'
+          description: book has been added
+      description: book was added
+  '/books/{id}':
+    get:
+      tags: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                List of books:
+                  value:
+                    id: 1
+                    name: '1984'
+                    price: 20
+                    rating: 10
+          description: all details is displayied by a user input
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Error:
+                  value:
+                    Error: Error message.
+          description: book was not found
+      summary: display all details of a book
+      description: 'return all details of a given book '
+    delete:
+      tags:
+        - delete
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/delete-book'
+              examples:
+                error:
+                  value:
+                    Error: no content
+          description: No connection
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                error:
+                  value:
+                    Error: book was not found
+          description: was not found
+      operationId: id
+      summary: deleted book
+      description: book was deleted
+    parameters:
+      -
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+        in: path
+        required: true
+components:
+  schemas:
+    Error:
+      title: Root Type for Error
+      description: ''
+      type: object
+      properties:
+        Error:
+          type: string
+      example:
+        Error: Error message.
+    new-book:
+      title: Root Type for new-book
+      description: ''
+      required:
+        - name
+        - price
+        - rating
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          format: int32
+          type: integer
+        rating:
+          format: int32
+          type: integer
+      example:
+        name: book
+        price: 10
+        rating: 10
+    delete-book:
+      title: Root Type for delete-book
+      description: ''
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+      example:
+        id: 1

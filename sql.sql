@@ -1,36 +1,6 @@
 
 CREATE TABLE books (
                        bookId INT PRIMARY KEY AUTO_INCREMENT,
-                       title VARCHAR(255),
-                       author VARCHAR(255),
-                       publicationYear INT,
-
-);
-
-
-CREATE TABLE book_reviews (
-                              reviewId INT PRIMARY KEY AUTO_INCREMENT,
-                              bookId INT,
-                              rating INT,
-                              review VARCHAR(250),
-                              FOREIGN KEY (bookId) REFERENCES Books(bookId)
-);
-
-CREATE TABLE books (
-                       bookId INT PRIMARY KEY AUTO_INCREMENT,
-                       title VARCHAR(255) NOT NULL,
-                       author VARCHAR(255) NOT NULL,
-                       publicationYear INT NOT NULL
-);
-CREATE TABLE book_reviews (
-                              reviewId INT PRIMARY KEY AUTO_INCREMENT,
-                              bookId INT NOT NULL,
-                              rating INT NOT NULL,
-                              review VARCHAR(250) NOT NULL,
-                              FOREIGN KEY (bookId) REFERENCES Books(bookId)
-);
-CREATE TABLE books (
-                       bookId INT PRIMARY KEY AUTO_INCREMENT,
                        title VARCHAR(255) NULL,
                        author VARCHAR(255) NULL,
                        publicationYear INT NULL
