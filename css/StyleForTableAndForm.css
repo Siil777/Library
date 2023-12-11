@@ -1,0 +1,38 @@
+form {
+    transition: transform 0.3s ease;
+
+}
+
+form:hover {
+    transform: scale(1.4);
+
+
+}
+
+table {
+    transition: transform 0.3s ease;
+
+
+
+}
+
+table:hover {
+    transform: scale(1.1);
+
+
+}
+
+
+
+.review{
+    position:relative;
+    width: 20%;
+
+}
+.bookadd
+{
+    position:relative;
+    width: 20%;
+
+
+}

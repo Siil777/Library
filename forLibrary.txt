@@ -1,0 +1,25 @@
+1. npm install mysql2 , npm install cors
+
+
+2. find ports
+netstat -ano | find "8080"
+
+3. adjust port for js
+
+node books.js
+node book_reviews.js
+
+
+Никто не сталкивался когда через js делаешь insert в XAMMP table и все columns всегда null display, хотя должен быть varchar или int 
+ const sql = 'INSERT INTO books (title, author, publicationYear) VALUES (?, ?, ?)';
+ const values = [title, author, publicationYear];
+
+просто если мы создаем some table(...и там есть column title VARVHAR(100), это ведь уже значит что для этой column default empty string('')
+
+
+
+<form method="post" action="XAMMP">
+
+
+
+

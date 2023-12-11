@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+.heading {
+    width: 70%;
+    margin: 200px auto;
+    font-size: 60px;
+    font-family: 'Niconne', cursive;
+    letter-spacing: 4px;
+}
+.animationOne {
+    animation: animationOne 1s 5ms 1;
+}
+@keyframes animationOne {
+    from {
+        margin-left: 100px;
+        opacity: 0;
+        filter: blur(5px);
+    }
+    to {
+        margin-left: 0;
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+.animationTwo {
+    animation: animationTwo 1s 5ms 1;
+    opacity: 0;
+}
+@keyframes animationTwo {
+    from {
+        margin-left: 0;
+        opacity: 1;
+        filter: blur(0);
+    }
+    to {
+        margin-left: 100px;
+        opacity: 0;
+        filter: blur(5px);
+    }
+}

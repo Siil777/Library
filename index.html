@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Library CRUD Application</title>
+</head>
+<body>
+<h1>Library CRUD Application</h1>
+
+<h2>Add a New Book</h2>
+<form id="book-form" action="http://localhost:8080/books" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="author" placeholder="Author">
+    <input type="number" name="publicationYear" placeholder="Year">
+    <button type="submit">Add book</button>
+</form>
+<h2>Library Catalog</h2>
+<ul>
+    <ul id="book-list"></ul>
+
+
+</ul>
+
+
+
+<br>
+
+<h2>Add a New Book Review</h2>
+<form id="review-form" method="post" action="http://localhost:8080/book-reviews">
+
+    <input type="text" name="bookId" placeholder="Book ID">
+    <input type="number" name="rating" placeholder="Rating">
+    <input type="text" name="review" placeholder="Review">
+    <button type="submit">Add Review</button>
+</form>
+
+<h2>Reviews</h2>
+<ul>
+
+    <ul id="review-list"></ul>
+
+</ul>
+</body>
+</html>
+
+<script>
+    // Function to fetch and display the list of books
+    async function fetchBooks() {
+        const response = await fetch('http://localhost:8080/books');
+        const books = await response.json();
+
+        const bookList = document.getElementById('book-list');
+        bookList.innerHTML = ''; // Clear the existing content
+
+        books.forEach((book) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `id:${book.bookId}, Title: ${book.title}, Author: ${book.author},publicationYear: (${book.publicationYear})`;
+            bookList.appendChild(listItem);
+        });
+    }
+
+
+    fetchBooks();
+</script>
+
+<script>
+    // Function to fetch and display the list of books
+    async function fetchBooks() {
+        const response = await fetch('http://localhost:8080/book-reviews');
+        const books = await response.json();
+
+        const bookList = document.getElementById('review-list');
+        bookList.innerHTML = ''; // Clear the existing content
+
+        books.forEach((book) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `id:${book.bookId}, Rating: ${book.rating}, Review: ${book.review}`;
+            bookList.appendChild(listItem);
+        });
+    }
+
+
+    fetchBooks();
+</script>
+
+<script>
+    document.getElementById('book-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const title = document.querySelector('[name="title"]').value;
+        const author = document.querySelector('[name="author"]').value;
+        const publicationYear = document.querySelector('[name="publicationYear"]').value;
+
+        // Construct the request payload
+        const data = {
+            title: title,
+            author: author,
+            publicationYear: publicationYear
+        };
+
+        // Send the data to the server using fetch
+        try {
+            const response = await fetch('http://localhost:8080/books', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add book');
+            }
+
+
+            alert('Book added successfully!');
+        } catch (error) {
+            console.error('Error:', error.message);
+
+            alert('Failed to add book. Please try again.');
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('review-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const bookId= document.querySelector('[name="bookId"]').value;
+        const rating = document.querySelector('[name="rating"]').value;
+        const review = document.querySelector('[name="review"]').value;
+
+        // Construct the request payload
+        const data = {
+            bookId: bookId,
+            rating: rating,
+            review: review
+        };
+
+        // Send the data to the server using fetch
+        try {
+            const response = await fetch('http://localhost:8080/book-reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add book');
+            }
+
+
+            alert('review added successfully!');
+        } catch (error) {
+            console.error('Error:', error.message);
+
+            alert('Failed to add book. Please try again.');
+        }
+    });
+</script>
+<style>
+    html {
+        color: black;
+        position: relative;
+    }
+
+    html::before {
+        content: "";
+        background-image: url("AP22292517795427-e1666280153894.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>

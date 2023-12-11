@@ -1,0 +1,46 @@
+@keyframes moveInscription {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(40%, 0); /* Adjust X-coordinate as needed */
+    }
+    50% {
+        transform: translate(100px, 100px); /* Adjust X and Y coordinates as needed */
+    }
+    75% {
+        transform: translate(0, 100px); /* Adjust Y-coordinate as needed */
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.moving-inscription {
+    position: fixed; /* Fixed position to keep it centered relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+    animation: moveInscription 10s linear infinite;
+    width: 200px;
+    white-space: nowrap;
+}
+
+.genre {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    background-color: transparent;
+    color: black;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transform-style: preserve-3d;
+    transform-origin: 10% 10% -250px;
+    top: -150px;
+}
+
+
+
