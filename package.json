@@ -5,14 +5,14 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
-<<<<<<< HEAD
+
     "mysql2": "^3.6.3",
     "nodemon": "^3.0.2",
     "swagger-ui-express": "^5.0.0",
-    "yamljs": "^0.3.0"
-=======
+    "yamljs": "^0.3.0",
+
     "mysql2": "^3.6.3"
->>>>>>> dfb94c0713c4137182a316389c290162335f4edb
+
   },
   "scripts": {
     "start": "node app.js"

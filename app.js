@@ -147,7 +147,7 @@ app.delete('/book-reviews/:id', (req, res) => {
     });
 });
 
-const port = 8080;
+const port = 3030;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
