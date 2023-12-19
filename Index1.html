@@ -37,23 +37,17 @@
         data() {
             return {
                 books: [
-                    { name: "1984", price: 20, rating: 10 },
-                    { name: "In Search of Lost Time", price: 8.5, rating: 10 },
-                    { name: "Don Quixote", price: 1.99, rating: 10 },
-                    { name: "The Great Gatsby", price: 2.5, rating: 10 }
                 ]
             };
         },
         async created() {
-            // Assuming the server response is an array of books
-            // If it's not, adjust accordingly
-            this.books = await (await fetch('http://localhost:3030/books')).json();
+            //array of books
+            this.books = await (await fetch('http://localhost:8080/books')).json();
         },
     });
 
     vue.mount('#app');
 
 </script>
-
 </body>
 </html>

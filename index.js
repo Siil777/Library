@@ -1,11 +1,14 @@
 const express = require('express');
+const cors=require('cors');
 const app = express();
-const port = 3030;
+const port = 8080
 const swaggerUI = require('swagger-ui-express');
 const yamljs = require('yamljs');
 
 const swaggerDocument = yamljs.load('./docs/swagger.yaml');
 app.use(express.json());
+app.use(cors());
+
 
 
 const books=[
@@ -13,8 +16,6 @@ const books=[
     {id:2,name:"In Search of Lost Time",price:8.5, rating:10},
     {id:3,name:"Don Quixote",price:1.99, rating:10},
     {id:4,name:"The Great Gatsby",price:2.5, rating:10},
-
-
 ]
 
 app.get('/books',(req, res)=>{
