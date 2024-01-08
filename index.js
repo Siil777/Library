@@ -29,7 +29,7 @@ app.get('/books', (req, res) => {
     res.send(books);
 });
 
-app.post('/books', (req, res) =>{
+/*app.post('/books', (req, res) =>{
     if(!req.body.name || !req.body.price || !req.body.rating){
         return res.status(400).send({error: "One or all parameteres are missing"})
     }
@@ -42,7 +42,7 @@ app.post('/books', (req, res) =>{
     books.push(book)
 
     res.status(201).location(`${getBaseUrl(req)}/games/${books.length}`).send(books)
-});
+});*/
 
 app.delete('/books/:id', (req, res) =>{
     if(typeof books[req.params.id - 1] === 'undefined'){
