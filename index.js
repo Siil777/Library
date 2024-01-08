@@ -44,7 +44,6 @@ app.post('/books', (req, res) =>{
     res.status(201).location(`${getBaseUrl(req)}/games/${books.length}`).send(books)
 });
 
-/*
 app.delete('/books/:id', (req, res) =>{
     if(typeof books[req.params.id - 1] === 'undefined'){
         return res.status(404).send({error: "book not found"})
@@ -52,7 +51,6 @@ app.delete('/books/:id', (req, res) =>{
     books.splice(req.params.id -1, 1);
     res.status(204).send({error: "No Content"});
 });
-*/
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
