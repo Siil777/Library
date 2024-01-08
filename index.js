@@ -18,12 +18,12 @@ const books=[
     {id:4,name:"The Great Gatsby", price:2.5, rating:10},
 ]
 
-/*app.get('/books/:id', (req, res) =>{
+app.get('/books/:id', (req, res) =>{
     if(typeof books[req.params.id - 1] === 'undefined'){
         return res.status(404).send({error: "Book not found"})
     }
     res.send(books[req.params.id - 1])
-})*/
+})
 
 app.get('/books', (req, res) => {
     res.send(books);
