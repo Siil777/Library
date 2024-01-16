@@ -1,22 +1,35 @@
 // db.js
+const Sequelize = require('sequelize');
 
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'pavelivanov',
-    password: 'YwMDyvjLJt1cqQzY',
-    database: 'pavelivanov',
-});
-
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database: ' + err.stack);
-        return;
+const sequelize = new Sequelize(
+    process.env.NAME,
+    process.env.USER,
+    process.env.PASS,
+    {
+        host: process.env.HOST,
+        dialect: "mariadb",
+        define: {
+            timestamps: false
+        },
+        logging: (msg) => {
+            console.log(`Sequelize: ${msg}`);
+        },
     }
-    console.log('Connected to the database as ID ' + connection.threadId);
-});
+);
 
-module.exports = connection;
+
+const db={}
+db.Sequelize=Sequelize
+db.sequelize=sequelize
+db.books=require("./models/Book.model")(sequelize,Sequelize)
+db.clients=require("./models/Client.model")(sequelize,Sequelize)
+module.exports=db
+
+async function Sync(){
+    await sequelize.sync({alter:true}) 
+                                        
+}
+module.exports={db,Sync};
+
 
 
