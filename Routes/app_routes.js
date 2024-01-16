@@ -14,13 +14,13 @@ module.exports = (app) => {
 
 }
     // Clients routes
-/*     app.route("/clients")
-    .get(clientsController.getAllClients) //get all books list
+     app.route("/clients")
+    // .get(clientsController.getAllClients) //get all books list
     .post(clientsController.createNewClients) //Create
 
-    app.route("/clients/:id")
+/*     app.route("/clients/:id")
     .get(clientsController.getByIdClients) //get a book by id
     .put(clientsController.updateByIdClients) //change by id
-    .delete(clientsController.deleteByIdClients) // delete a book
-} 
- */
+    .delete(clientsController.deleteByIdClients) // delete a book */
+
+

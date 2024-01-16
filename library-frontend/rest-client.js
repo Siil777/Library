@@ -20,7 +20,7 @@ const app = Vue.createApp({
     }
 }); 
 
-/* app.mount('#app'); 
+ app.mount('#app'); 
 
 const ClientTable = Vue.createApp({
     data() {
@@ -50,4 +50,3 @@ const ClientTable = Vue.createApp({
 });
 
 ClientTable.mount('#appClient'); 
- */

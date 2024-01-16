@@ -1,8 +1,8 @@
-/*  //Clients controller
+ //Clients controller
 const { db } = require('../db')
 const Clients=db.clients;
 
-//Get list of all clients
+/* //Get list of all clients
 exports.getAllClients = async (req, res) => {
     const clients = await Clients.findAll({ attributes: ["Name"] });
     res.send(clients);
@@ -15,7 +15,7 @@ exports.getByIdClients = async (req, res) => {
         return;
     }
     res.send(clients);
-};
+}; */
 
 // Create a new book
 exports.createNewClients = async (req, res) => {
@@ -90,9 +90,9 @@ exports.deleteByIdClients = async (req, res) => {
         return;
     }
     res.status(204).send()
-};
+}; */
 
 const getBaseUrl = (request) => {
     return (request.connection && request.connection.encrypted ? "https" : "http") +
         `://${request.headers.host}`;
-};  */
+}; 
