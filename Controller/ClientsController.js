@@ -2,12 +2,12 @@
 const { db } = require('../db')
 const Clients=db.clients;
 
-/* //Get list of all clients
-exports.getAllClients = async (req, res) => {
+//Get list of all clients
+/* exports.getAllClients = async (req, res) => {
     const clients = await Clients.findAll({ attributes: ["Name"] });
     res.send(clients);
 };
-// Get specific book by id
+//Get specific book by id
 exports.getByIdClients = async (req, res) => {
     const clients = await Clients.findByPk(req.params.id);
     if (!clients) {
@@ -15,10 +15,10 @@ exports.getByIdClients = async (req, res) => {
         return;
     }
     res.send(clients);
-}; */
+};  */
 
 // Create a new book
-exports.createNewClients = async (req, res) => {
+/* exports.createNewClients = async (req, res) => {
     console.log(req.body);
     let client;
     try {
@@ -37,9 +37,9 @@ exports.createNewClients = async (req, res) => {
         .status(201)
         .location(`${getBaseUrl(req)}/clients/${client.id}`)
         .json(client);
-};
+}; */
 
-/* exports.deleteByIdClients = async (req, res) => {
+ exports.deleteByIdClients = async (req, res) => {
     let result;
     try {
         result = await Clients.destroy({ where: { id: req.params.id } });
@@ -50,13 +50,13 @@ exports.createNewClients = async (req, res) => {
     }
 
     if (result === 0 || result === undefined) {
-        res.status(404).send({ "error": "book not found" });
+        res.status(404).send({ "error": "client not found" });
         return;
     }
     res.status(204).send()
-}; */
+}; 
 
-/* exports.updateByIdClients=async(req,res)=>{
+/*  exports.updateByIdClients=async(req,res)=>{
     let result;
     try{
         result=await Clients.update(req.body, {where: {id:req.params.id}})
@@ -66,31 +66,14 @@ exports.createNewClients = async (req, res) => {
         return
     }
     if(result===0 || result===undefined){
-        res.status(404).send({"error":"book not found"})
+        res.status(404).send({"error":"client not found"})
     }
     const book=await Clients.findByPk(res.params.id)
     res.status(200)
         .location(`${getBaseUrl(req)}/clients/${clients.id}`)
         .json(book)
 
-}
-
-exports.deleteByIdClients = async (req, res) => {
-    let result;
-    try {
-        result = await Clients.destroy({ where: { id: req.params.id } });
-    } catch (error) {
-        console.log("clientsCreateDelete", error);
-        res.status(500).send({ "error": "server error, try again later" });
-        return;
-    }
-
-    if (result === 0 || result === undefined) {
-        res.status(404).send({ "error": "client not found" });
-        return;
-    }
-    res.status(204).send()
-}; */
+} */
 
 const getBaseUrl = (request) => {
     return (request.connection && request.connection.encrypted ? "https" : "http") +

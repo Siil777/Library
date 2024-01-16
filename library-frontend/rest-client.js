@@ -1,4 +1,4 @@
-const app = Vue.createApp({
+/* const app = Vue.createApp({
     data() {
         return {
             bookInModal: { name :null},
@@ -20,7 +20,7 @@ const app = Vue.createApp({
     }
 }); 
 
- app.mount('#app'); 
+ app.mount('#app');  */
 
 const ClientTable = Vue.createApp({
     data() {
