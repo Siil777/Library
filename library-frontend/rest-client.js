@@ -1,4 +1,4 @@
-/* const app = Vue.createApp({
+const app = Vue.createApp({
     data() {
         return {
             bookInModal: { name :null},
@@ -20,12 +20,12 @@
     }
 }); 
 
- app.mount('#app');  */
+ app.mount('#app');  
 
 const ClientTable = Vue.createApp({
     data() {
         return {
-            clientInModal: { name: null},
+            clientInModal: { Name: null},
             clients: [],  
         };
     },
@@ -42,11 +42,18 @@ const ClientTable = Vue.createApp({
     
     methods: {
         async getClient(id) {
-            this.clientInModal = await (await fetch(`http://localhost:8080/clients/${id}`)).json();
-            let ClientInfoModal = new bootstrap.Modal(document.getElementById('ClientInfoModal'), {});
-            ClientInfoModal.show();
+            if (id !== undefined) {
+                try {
+                    this.clientInModal = await (await fetch(`http://localhost:8080/clients/${id}`)).json();
+                    let ClientInfoModal = new bootstrap.Modal(document.getElementById('ClientInfoModal'), {});
+                    ClientInfoModal.show();
+                } catch (error) {
+                    console.error('Error fetching client details:', error);
+                }
+            }
         }
     }
+    
 });
 
 ClientTable.mount('#appClient'); 

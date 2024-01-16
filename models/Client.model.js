@@ -1,6 +1,6 @@
 // models/Client.model.js
 module.exports = (sequelize, Sequelize) => {
-    const Client = sequelize.define("Client", {
+    const Client = sequelize.define("Clients", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,

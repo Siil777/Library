@@ -3,10 +3,16 @@ const { db } = require('../db')
 const Clients=db.clients;
 
 //Get list of all clients
-/* exports.getAllClients = async (req, res) => {
-    const clients = await Clients.findAll({ attributes: ["Name"] });
-    res.send(clients);
+exports.getAllClients = async (req, res) => {
+    try {
+        const clients = await Clients.findAll({ attributes: ["id", "Name", "PhoneNumber", "Email", "Address"] });
+        res.send(clients);
+    } catch (error) {
+        console.error("Error fetching clients:", error);
+        res.status(500).send({ error: "Server error, try again later" });
+    }
 };
+
 //Get specific book by id
 exports.getByIdClients = async (req, res) => {
     const clients = await Clients.findByPk(req.params.id);
@@ -15,10 +21,10 @@ exports.getByIdClients = async (req, res) => {
         return;
     }
     res.send(clients);
-};  */
+};  
 
 // Create a new book
-/* exports.createNewClients = async (req, res) => {
+ exports.createNewClients = async (req, res) => {
     console.log(req.body);
     let client;
     try {
@@ -37,7 +43,7 @@ exports.getByIdClients = async (req, res) => {
         .status(201)
         .location(`${getBaseUrl(req)}/clients/${client.id}`)
         .json(client);
-}; */
+}; 
 
  exports.deleteByIdClients = async (req, res) => {
     let result;
@@ -56,7 +62,7 @@ exports.getByIdClients = async (req, res) => {
     res.status(204).send()
 }; 
 
-/*  exports.updateByIdClients=async(req,res)=>{
+ exports.updateByIdClients=async(req,res)=>{
     let result;
     try{
         result=await Clients.update(req.body, {where: {id:req.params.id}})
@@ -73,7 +79,7 @@ exports.getByIdClients = async (req, res) => {
         .location(`${getBaseUrl(req)}/clients/${clients.id}`)
         .json(book)
 
-} */
+}
 
 const getBaseUrl = (request) => {
     return (request.connection && request.connection.encrypted ? "https" : "http") +

@@ -4,7 +4,7 @@ const Books = db.books;
 
 // Get list of books
 exports.getAll = async (req, res) => {
-    const books = await Books.findAll({ attributes: ["name"] });
+    const books = await Books.findAll({ attributes: ["name", "price", "rating"] });
     res.send(books);
 };
 // Get specific book by id
@@ -76,7 +76,7 @@ exports.updateById=async(req,res)=>{
 
 }
 
-/* exports.deleteById = async (req, res) => {
+exports.deleteById = async (req, res) => {
     let result;
     try {
         result = await Books.destroy({ where: { id: req.params.id } });
@@ -91,7 +91,7 @@ exports.updateById=async(req,res)=>{
         return;
     }
     res.status(204).send()
-}; */
+}; 
 
 const getBaseUrl = (request) => {
     return (request.connection && request.connection.encrypted ? "https" : "http") +

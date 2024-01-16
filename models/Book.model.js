@@ -11,11 +11,11 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
         },
         price: {
-            type: Sequelize.DECIMAL,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         rating: {
-            type: Sequelize.DECIMAL,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
     });
