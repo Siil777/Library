@@ -7,10 +7,10 @@ const app = Vue.createApp({
         };
     },
     async created() {
-        //array of books
+        // array of books
         this.books = await (await fetch('http://localhost:8080/books')).json();
-        console.log(`${books}`)
-    },
+        console.log(`${this.books}`);
+    },    
     methods: {
         async getBook(id) {
             this.bookInModal = await (await fetch(`http://localhost:8080/books/${id}`)).json();
@@ -18,9 +18,9 @@ const app = Vue.createApp({
             bookInfoModal.show();
         }
     }
-});
+}); 
 
-app.mount('#app'); 
+/* app.mount('#app'); 
 
 const ClientTable = Vue.createApp({
     data() {
@@ -32,13 +32,13 @@ const ClientTable = Vue.createApp({
     async created() {
         console.log('Fetching clients...');
         try {
-        
             this.clients = await (await fetch('http://localhost:8080/clients')).json();
-            console.log('Clients fetched successfully:', this.clients); 
+            console.table('Clients fetched successfully:', this.clients); 
         } catch (error) {
             console.error('Error fetching clients:', error);
         }
     },
+    
     
     methods: {
         async getClient(id) {
@@ -50,3 +50,4 @@ const ClientTable = Vue.createApp({
 });
 
 ClientTable.mount('#appClient'); 
+ */

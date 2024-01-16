@@ -76,7 +76,7 @@ exports.updateById=async(req,res)=>{
 
 }
 
-exports.deleteById = async (req, res) => {
+/* exports.deleteById = async (req, res) => {
     let result;
     try {
         result = await Books.destroy({ where: { id: req.params.id } });
@@ -91,7 +91,7 @@ exports.deleteById = async (req, res) => {
         return;
     }
     res.status(204).send()
-};
+}; */
 
 const getBaseUrl = (request) => {
     return (request.connection && request.connection.encrypted ? "https" : "http") +

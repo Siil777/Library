@@ -12,8 +12,15 @@ module.exports = (app) => {
         .put(booksController.updateById) //change by id
         .delete(booksController.deleteById) // delete a book
 
-    // Clients routes
-    app.route("/clients")
-        .get(clientsController.getAllClients);
 }
+    // Clients routes
+/*     app.route("/clients")
+    .get(clientsController.getAllClients) //get all books list
+    .post(clientsController.createNewClients) //Create
 
+    app.route("/clients/:id")
+    .get(clientsController.getByIdClients) //get a book by id
+    .put(clientsController.updateByIdClients) //change by id
+    .delete(clientsController.deleteByIdClients) // delete a book
+} 
+ */
