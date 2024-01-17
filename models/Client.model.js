@@ -18,6 +18,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
         },
+        Address: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        
     });
     
     return Client;
