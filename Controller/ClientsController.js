@@ -13,11 +13,11 @@ exports.getAllClients = async (req, res) => {
     }
 };
 
-//Get specific book by id
+//Get specific client by id
 exports.getByIdClients = async (req, res) => {
     const clients = await Clients.findByPk(req.params.id);
     if (!clients) {
-        res.status(404).send({ "Error": "Book not found" });
+        res.status(404).send({ "Error": "Client not found" });
         return;
     }
     res.send(clients);
