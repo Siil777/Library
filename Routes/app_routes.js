@@ -1,5 +1,7 @@
 const booksController = require('../Controller/BooksController.js');
 const clientsController = require('../Controller/ClientsController.js');
+const BorrowingController = require('../Controller/BorrowingBooksController.js');
+
 
 module.exports = (app) => {
     // Books routes
@@ -14,13 +16,25 @@ module.exports = (app) => {
 
 
     // Clients routes
-     app.route("/clients")
+      app.route("/clients")
     .get(clientsController.getAllClients) //get all books list
      .post(clientsController.createNewClients) //Create
 
     app.route("/clients/:id")
-     .get(clientsController.getByIdClients) //get a book by id
+     .get(clientsController.getByIdClients) //get a book by id 
     .put(clientsController.updateByIdClients) //change by id */
-    .delete(clientsController.deleteByIdClients) // delete a book */
-}
+    .delete(clientsController.deleteByIdClients) //  */delete a book */ getByIdBorrowing
 
+    app.route("/borrowing")
+    .get(BorrowingController.getAllBorrowing)
+    .post(BorrowingController.createNewBorrowing)
+
+    app.route("/borrowing/:id")
+    .get(BorrowingController.getByIdBorrowing) 
+    .put(BorrowingController.updateByIdBorrowing) 
+    .delete(BorrowingController.deleteByIdBorrowing) 
+
+
+   /*  app.route("/Connection")
+        .get(BorrowingController.getAll) */
+}

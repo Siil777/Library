@@ -23,12 +23,15 @@ db.Sequelize=Sequelize
 db.sequelize=sequelize
 db.books=require("./models/Book.model")(sequelize,Sequelize)
 db.clients=require("./models/Client.model")(sequelize,Sequelize)
+db.Borrowingbook=require("./models/BorrowingBook.model")(sequelize,Sequelize)
+
+// db.Connection=require("./models/Connection.model")(sequelize,Sequelize)
 module.exports=db
 
-async function Sync(){
-    await sequelize.sync({alter:true}) 
-                                        
-}
+const Sync = async () => {
+    await sequelize.sync({ alter: true });
+};
+
 module.exports={db,Sync};
 
 

@@ -56,25 +56,29 @@ exports.deleteById = async (req, res) => {
     res.status(204).send()
 };
 
-exports.updateById=async(req,res)=>{
-    let result=
-    delete(req.body.id)
-    try{
-        result=await Books.update(req.body, {where: {id:req.params.id}})
-    }catch(error){
-        console.log("BooksUpdate",error)
-        res.status(500).send({ "error": "server error, try later again"})
-        return
+exports.updateById = async (req, res) => {
+    let result;
+    
+    try {
+        result = await Books.update(req.body, { where: { id: req.params.id } });
+    } catch (error) {
+        console.log("BooksUpdate", error);
+        res.status(500).send({ "error": "server error, try later again" });
+        return;
     }
-    if(result===0 || result===undefined){
-        res.status(404).send({"error":"book not found"})
+
+    if (result[0] === 0 || result === undefined) {
+        res.status(404).send({ "error": "book not found" });
+        return;
     }
-    const book=await Book.findByPk(res.params.id)
+
+    const book = await Books.findByPk(req.params.id);
+    
     res.status(200)
         .location(`${getBaseUrl(req)}/books/${book.id}`)
-        .json(book)
+        .json(book);
+};
 
-}
 
 exports.deleteById = async (req, res) => {
     let result;
