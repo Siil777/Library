@@ -46,8 +46,8 @@ exports.createNewBorrowing = async (req, res) => {
     }
 };
 
-// Delete by Id
-exports.deleteByIdBorrowing = async (req, res) => {
+// Delete by Id borrowing book
+ exports.deleteByIdBorrowing = async (req, res) => {
     try {
         const result = await BorrowBooks.destroy({ where: { id: req.params.id } });
         if (result === 0 || result === undefined) {
@@ -56,10 +56,10 @@ exports.deleteByIdBorrowing = async (req, res) => {
         }
         res.status(204).send();
     } catch (error) {
-        console.error("Error deleting borrowingBook by id:", error);
-        res.status(500).send({ "error": "Server error, try again later" });
+        console.error("Error deleting BorrowingBook by id:", error);
+        res.status(500).send({ "error": "server error, try again later" });
     }
-};
+}; 
 
 // Update by Id
 exports.updateByIdBorrowing = async (req, res) => {
