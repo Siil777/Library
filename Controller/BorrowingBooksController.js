@@ -2,7 +2,7 @@ const { db } = require('../db');
 const BorrowBooks = db.Borrowingbook;
 
 // Get list of borrowingBooks
-exports.getAllBorrowing = async (req, res) => {
+ exports.getAllBorrowing = async (req, res) => {
     try {
         const borrowingBooks = await BorrowBooks.findAll({ attributes: ["id_book", "id_client"] });
         res.send(borrowingBooks);
@@ -25,7 +25,7 @@ exports.getByIdBorrowing = async (req, res) => {
         console.error("Error fetching borrowingBook by id:", error);
         res.status(500).send({ "error": "Server error, try again later" });
     }
-};
+}; 
 
 // Create a new Borrowingbook
 exports.createNewBorrowing = async (req, res) => {
